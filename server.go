@@ -1,19 +1,26 @@
 package main
 
 import (
+	"database/sql"
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
+	"github.com/lockieRichter/movieTracker/database"
 	"github.com/lockieRichter/movieTracker/graph"
 	"github.com/lockieRichter/movieTracker/graph/generated"
 )
 
 const defaultPort = "8080"
 
+var db *sql.DB
+
 func main() {
+
+	db := database.InitDB()
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
