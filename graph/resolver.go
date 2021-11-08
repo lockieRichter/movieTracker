@@ -2,7 +2,11 @@ package graph
 
 //go:generate go run github.com/99designs/gqlgen
 
-import "github.com/lockieRichter/movieTracker/graph/model"
+import (
+	"database/sql"
+
+	"github.com/lockieRichter/movieTracker/graph/model"
+)
 
 // This file will not be regenerated automatically.
 //
@@ -10,4 +14,5 @@ import "github.com/lockieRichter/movieTracker/graph/model"
 
 type Resolver struct {
 	movies []*model.Movie
+	DB     *sql.DB
 }
